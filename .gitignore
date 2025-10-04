@@ -30,3 +30,6 @@ yarn-error.log*
 
 # Roadmap
 /ROADMAP.md
+
+# Next.js build output
+/frontend/.next/
