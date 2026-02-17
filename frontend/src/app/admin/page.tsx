@@ -27,6 +27,7 @@ export default function AdminClient() {
   const [stats, setStats] = useState<AdminStats | null>(null);
   const [users, setUsers] = useState<User[]>([]);
   const [grantedUsers, setGrantedUsers] = useState<GrantedUser[]>([]);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -153,7 +154,6 @@ export default function AdminClient() {
       <div className={styles.statsGrid}>
         <StatsCard title="Total Users" value={stats?.totalUsers ?? 0} />
         <StatsCard title="Total Pro Users" value={stats?.proUsers ?? 0} />
-        <StatsCard title="Granted Pro" value={grantedUsers.length} />
         <StatsCard title="Total Links Created" value={stats?.totalLinks ?? 0} />
       </div>
 
@@ -289,6 +289,8 @@ export default function AdminClient() {
           </table>
         </div>
       </div>
+
+
     </div>
   );
 }
