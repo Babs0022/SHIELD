@@ -15,13 +15,19 @@ export async function GET(
     }
 
     const policies = await sql`
-      SELECT resource_cid, recipient_address, mime_type, is_text 
-      FROM policies 
+      SELECT resource_cid, recipient_address, mime_type, is_text, status, valid
+      FROM policies
       WHERE LOWER(policy_id) = LOWER(${policyId})
     `;
 
     if (policies.length > 0) {
       const policy = policies[0];
+
+      // Check if policy is revoked
+      if (policy.status === 'revoked' || !policy.valid) {
+        return NextResponse.json({ error: "This link has been revoked by the creator." }, { status: 403 });
+      }
+
       const mappedPolicy = {
         resourceCid: policy.resource_cid,
         recipient_address: policy.recipient_address,

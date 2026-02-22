@@ -13,6 +13,22 @@ const siweSchema = z.object({
   policyId: z.string(),
 });
 
+// Helper function to log access attempts
+async function logAccessAttempt(policyId: string, recipientAddress: string, success: boolean, request: Request) {
+  try {
+    const ipAddress = request.headers.get('x-forwarded-for') ||
+                      request.headers.get('x-real-ip') ||
+                      'unknown';
+
+    await sql`
+      INSERT INTO access_logs (policy_id, recipient_address, success, ip_address, accessed_at)
+      VALUES (${policyId}, ${recipientAddress}, ${success}, ${ipAddress}, CURRENT_TIMESTAMP)
+    `;
+  } catch (error) {
+    console.error('Error logging access attempt:', error);
+    // Don't throw - we don't want logging failures to break the flow
+  }
+}
 
 const rpcUrl = process.env.BASE_MAINNET_RPC_URL;
 const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as Hex | undefined;
@@ -42,7 +58,16 @@ export async function POST(request: Request) {
     }
     const policy = policies[0];
 
+    // Check if policy is revoked
+    if (policy.status === 'revoked') {
+      // Log the failed access attempt
+      await logAccessAttempt(policyId, fields.address, false, request);
+      return NextResponse.json({ error: "This link has been revoked by the creator." }, { status: 403 });
+    }
+
     if (fields.address.toLowerCase() !== policy.recipient_address.toLowerCase()) {
+      // Log the failed access attempt
+      await logAccessAttempt(policyId, fields.address, false, request);
       return NextResponse.json({ error: "Signer address does not match recipient address." }, { status: 401 });
     }
 
@@ -58,8 +83,13 @@ export async function POST(request: Request) {
     });
 
     if (!isStillValid) {
+      // Log the failed access attempt
+      await logAccessAttempt(policyId, fields.address, false, request);
       return NextResponse.json({ error: "This link is no longer valid. It may have expired or reached its maximum number of access attempts." }, { status: 400 });
     }
+
+    // Log successful verification
+    await logAccessAttempt(policyId, fields.address, true, request);
 
     return NextResponse.json({ success: true });
 

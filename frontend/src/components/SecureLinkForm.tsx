@@ -66,8 +66,8 @@ const SecureLinkForm = () => {
   const [userStatus, setUserStatus] = useState<{ tier: string; dailyLinkCount: number; subscriptionExpiresAt: string | null } | null>(null);
 
   const tierLimits = {
-    free: { daily: 5, fileSize: 20 * 1024 * 1024, textChars: 500, multiFile: false },
-    pro: { daily: 50, fileSize: 100 * 1024 * 1024, textChars: Infinity, multiFile: true }
+    free: { daily: 5, fileSize: 30 * 1024 * 1024, textChars: 500, multiFile: false },
+    pro: { daily: 50, fileSize: 1024 * 1024 * 1024, textChars: Infinity, multiFile: true }
   };
 
   const isWrongNetwork = address && chainId !== baseChainId;
@@ -365,7 +365,7 @@ const SecureLinkForm = () => {
 
         {shareMode === 'file' ? (
           <label className={styles.fileLabel}>
-            <span>CONFIDENTIAL FILE (MAX {userStatus?.tier === 'pro' ? '100MB' : '20MB'})</span>
+            <span>CONFIDENTIAL FILE (MAX {userStatus?.tier === 'pro' ? '1GB' : '30MB'})</span>
             <input 
               type="file" 
               onChange={handleFileChange} 

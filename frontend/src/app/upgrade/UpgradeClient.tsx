@@ -135,8 +135,8 @@ export default function UpgradeClient() {
         </div>
         <div className={styles.benefitCard}>
           <h3>File Size</h3>
-          <p className={styles.benefitValue}>100MB</p>
-          <p className={styles.benefitOldValue}>vs 20MB on Free</p>
+          <p className={styles.benefitValue}>1GB</p>
+          <p className={styles.benefitOldValue}>vs 30MB on Free</p>
         </div>
         <div className={styles.benefitCard}>
           <h3>Text Length</h3>

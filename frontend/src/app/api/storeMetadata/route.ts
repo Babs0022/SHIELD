@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import sql from '@/lib/db';
 import { z } from 'zod';
+import { checkRateLimit } from '@/lib/rateLimit';
 
 const metadataSchema = z.object({
   policyId: z.string(),
@@ -50,11 +51,32 @@ export async function POST(request: NextRequest) {
     const dailyCount = user.daily_link_count;
 
     const tierLimits = {
-        free: { daily: 5, fileSize: 20 * 1024 * 1024, textChars: 500, multiFile: false },
-        pro: { daily: 50, fileSize: 100 * 1024 * 1024, textChars: Infinity, multiFile: true }
+        free: { daily: 5, fileSize: 30 * 1024 * 1024, textChars: 500, multiFile: false },
+        pro: { daily: 50, fileSize: 1024 * 1024 * 1024, textChars: Infinity, multiFile: true }
     };
 
     const limits = tierLimits[user.tier] || tierLimits.free; // Default to free if tier is not set
+
+    // Check rate limit
+    const rateLimitResult = await checkRateLimit(creatorId, user.tier || 'free', {
+      windowMs: 60 * 1000, // 1 minute
+      maxRequests: user.tier === 'pro' ? 10 : 3, // 10 for pro, 3 for free per minute
+    });
+
+    if (!rateLimitResult.allowed) {
+      return NextResponse.json(
+        {
+          error: "Rate limit exceeded. Please try again later.",
+          retryAfter: rateLimitResult.retryAfter,
+        },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': String(rateLimitResult.retryAfter),
+          },
+        }
+      );
+    }
 
     if (dailyCount >= limits.daily) {
       return NextResponse.json({ error: "You have reached your daily limit for creating links." }, { status: 429 });

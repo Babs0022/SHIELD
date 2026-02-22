@@ -126,9 +126,8 @@
   font-weight: 500;
   text-transform: uppercase;
 }
-.active { background-color: rgba(74, 222, 128, 0.1); color: #4ade80; } /* green-400 */
-.expired { background-color: rgba(251, 191, 36, 0.1); color: #fbb_f24; } /* amber-400 */
-.revoked { background-color: rgba(156, 163, 175, 0.1); color: #9ca3af; } /* zinc-400 */
+.activeStatus { background-color: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 4px 10px; border-radius: 100px; font-size: 11px; font-weight: 500; text-transform: uppercase; } /* green-400 */
+.revokedStatus { background-color: rgba(156, 163, 175, 0.1); color: #9ca3af; padding: 4px 10px; border-radius: 100px; font-size: 11px; font-weight: 500; text-transform: uppercase; } /* zinc-400 */
 
 @media (max-width: 768px) {
   .table thead {

@@ -8,6 +8,11 @@ interface Link {
   id: string;
   createdAt: string;
   url: string;
+  expiry: number;
+  maxAttempts: number;
+  status: string;
+  views: number;
+  lastAccessed: string | null;
 }
 
 export default function MyLinks() {
@@ -56,6 +61,41 @@ export default function MyLinks() {
     });
   };
 
+  const handleRevoke = async (policyId: string) => {
+    if (!confirm('Are you sure you want to revoke this link? The recipient will no longer be able to access it.')) {
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem('reown-siwe-token');
+      if (!token) {
+        throw new Error('Authentication token not found.');
+      }
+
+      const response = await fetch('/api/user/links/revoke', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ policyId }),
+      });
+
+      if (!response.ok) {
+        const { error } = await response.json();
+        throw new Error(error || 'Failed to revoke link.');
+      }
+
+      toast.success('Link revoked successfully!');
+      // Update the local state to reflect the revoked status
+      setLinks(links.map(link =>
+        link.id === policyId ? { ...link, status: 'revoked' } : link
+      ));
+    } catch (err) {
+      toast.error((err as Error).message);
+    }
+  };
+
   // Pagination Logic
   const indexOfLastLink = currentPage * linksPerPage;
   const indexOfFirstLink = indexOfLastLink - linksPerPage;
@@ -98,6 +138,9 @@ export default function MyLinks() {
             <tr>
               <th>Link URL</th>
               <th>Created At</th>
+              <th>Status</th>
+              <th>Views</th>
+              <th>Last Accessed</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -106,8 +149,27 @@ export default function MyLinks() {
               <tr key={link.id}>
                 <td data-label="Link URL" className={styles.policyId}>{link.url}</td>
                 <td data-label="Created At">{new Date(link.createdAt).toLocaleDateString()}</td>
+                <td data-label="Status">
+                  <span className={link.status === 'revoked' ? styles.revokedStatus : styles.activeStatus}>
+                    {link.status === 'revoked' ? 'Revoked' : 'Active'}
+                  </span>
+                </td>
+                <td data-label="Views">{link.views || 0}</td>
+                <td data-label="Last Accessed">
+                  {link.lastAccessed ? new Date(link.lastAccessed).toLocaleDateString() : 'Never'}
+                </td>
                 <td data-label="Actions" className={styles.actions}>
-                  <button onClick={() => handleCopy(link.url)}>Copy</button>
+                  <button onClick={() => handleCopy(link.url)} disabled={link.status === 'revoked'}>
+                    Copy
+                  </button>
+                  {link.status !== 'revoked' && (
+                    <button
+                      onClick={() => handleRevoke(link.id)}
+                      className={styles.revokeButton}
+                    >
+                      Revoke
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

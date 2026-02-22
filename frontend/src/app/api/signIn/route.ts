@@ -24,6 +24,46 @@ const createUserTable = async () => {
         created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
       );
     `;
+
+    // Create access_logs table for analytics
+    await sql`
+      CREATE TABLE IF NOT EXISTS access_logs (
+        id SERIAL PRIMARY KEY,
+        policy_id VARCHAR(255) NOT NULL,
+        recipient_address VARCHAR(42) NOT NULL,
+        success BOOLEAN DEFAULT true,
+        ip_address VARCHAR(45),
+        accessed_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+      );
+    `;
+
+    // Create indexes for access_logs
+    await sql`
+      CREATE INDEX IF NOT EXISTS idx_access_logs_policy_id
+      ON access_logs (policy_id);
+    `;
+
+    await sql`
+      CREATE INDEX IF NOT EXISTS idx_access_logs_accessed_at
+      ON access_logs (accessed_at);
+    `;
+
+    // Create rate_limits table
+    await sql`
+      CREATE TABLE IF NOT EXISTS rate_limits (
+        id SERIAL PRIMARY KEY,
+        wallet_address VARCHAR(42) NOT NULL,
+        requested_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+      );
+    `;
+
+    // Create index for rate_limits
+    await sql`
+      CREATE INDEX IF NOT EXISTS idx_rate_limits_wallet_time
+      ON rate_limits (wallet_address, requested_at);
+    `;
+
+    console.log('All database tables initialized successfully');
   } catch (error) {
     console.error('Error creating user tables:', error);
   }
