@@ -7,14 +7,14 @@ import styles from './Navbar.module.css';
 import UserMenu from './UserMenu';
 import { useAccount, useSignMessage } from 'wagmi';
 import { SUPER_ADMIN_ADDRESSES, TEAM_ADMIN_ADDRESSES } from '@/config/admin';
-import { useWeb3Modal } from '@web3modal/wagmi/react';
+import { useAppKit } from '@reown/appkit/react';
 import { SiweMessage } from 'siwe';
 import { toast } from 'react-hot-toast';
 import { useProfile } from '@/contexts/ProfileContext';
 
 export default function Navbar() {
   const { address, isConnected, chainId } = useAccount();
-  const { open } = useWeb3Modal();
+  const { open } = useAppKit();
   const { signMessageAsync } = useSignMessage();
   const { fetchProfile } = useProfile();
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);

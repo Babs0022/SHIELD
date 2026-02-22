@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-const DynamicProviders = dynamic(() => import('./providers').then(mod => mod.Providers), { ssr: false });
+const DynamicProviders = dynamic(() => import('./providers'), { ssr: false });
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
