@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { Scale, Shield, EyeOff, Lock, Server, Globe } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Shield',
@@ -86,22 +85,35 @@ export default function PrivacyPage() {
               <h2 className="text-xl font-semibold text-white mb-4">Data Security</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div className="bg-white/5 border border-white/10 rounded-lg p-4">
-                  <Lock className="w-5 h-5 text-indigo-400 mb-2" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-400 mb-2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
                   <p className="text-zinc-300 text-sm font-medium">End-to-End Encryption</p>
                   <p className="text-zinc-500 text-xs mt-1">All files and messages are encrypted before leaving your device</p>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-lg p-4">
-                  <Shield className="w-5 h-5 text-indigo-400 mb-2" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-400 mb-2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
                   <p className="text-zinc-300 text-sm font-medium">Client-Side Keys</p>
                   <p className="text-zinc-500 text-xs mt-1">Your encryption keys are generated in your browser and never transmitted to our servers</p>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-lg p-4">
-                  <Globe className="w-5 h-5 text-indigo-400 mb-2" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-400 mb-2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
                   <p className="text-zinc-300 text-sm font-medium">Decentralized Storage</p>
                   <p className="text-zinc-500 text-xs mt-1">Encrypted data is stored on IPFS, a distributed network</p>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-lg p-4">
-                  <Scale className="w-5 h-5 text-indigo-400 mb-2" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-400 mb-2">
+                    <path d="M2 12h20"></path>
+                    <path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6"></path>
+                    <path d="M12 2v20"></path>
+                  </svg>
                   <p className="text-zinc-300 text-sm font-medium">Blockchain Verification</p>
                   <p className="text-zinc-500 text-xs mt-1">Access permissions are recorded on-chain for transparency</p>
                 </div>
