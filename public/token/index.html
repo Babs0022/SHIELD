@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$SHLD Token | Shield Ecosystem Utility Token on Base</title>
+    <meta name="description" content="Buy $SHLD - The official utility token for Shield Ecosystem. Trade on Uniswap, Base chain. Powering secure file sharing, ephemeral messaging, and governance. Contract: 0x0206e570a5d300E307De9D9896e91F603F80f930">
+    <meta name="keywords" content="$SHLD, SHLD token, Shield token, cryptocurrency, Base chain, Uniswap, ERC20, utility token, decentralized file sharing, web3 token, buy SHLD, trade SHLD">
+    <link rel="icon" href="/Shld.png">
+    <link rel="canonical" href="https://shieldhq.xyz/token">
+    <meta property="og:title" content="$SHLD Token | Shield Ecosystem Utility Token">
+    <meta property="og:description" content="The official utility token for Shield Ecosystem. Trade $SHLD on Uniswap. Base chain ERC-20 token powering secure file sharing and governance.">
+    <meta property="og:url" content="https://shieldhq.xyz/token">
+    <meta property="og:site_name" content="Shield">
+    <meta property="og:image" content="https://shieldhq.xyz/$SHLD.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="$SHLD Token | Shield Ecosystem">
+    <meta name="twitter:description" content="Official utility token for Shield Ecosystem. Trade on Uniswap - Base chain.">
+    <meta name="twitter:image" content="https://shieldhq.xyz/$SHLD.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'Coinbase Sans';
+            src: url('/WOFF2/Coinbase-Sans/Coinbase_Sans-Regular-web-1.32.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Coinbase Sans';
+            src: url('/WOFF2/Coinbase-Sans/Coinbase_Sans-Bold-web-1.32.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+        body {
+            font-family: 'Coinbase Sans', 'Inter', sans-serif;
+            background-color: #000000;
+            color: #e4e4e7;
+        }
+        .text-gradient {
+            background: linear-gradient(to bottom right, #ffffff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .token-color {
+            color: #818CF8;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .copy-btn {
+            transition: all 0.2s ease;
+        }
+        .copy-btn:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        .copy-btn.copied {
+            color: #22c55e;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-500/30 selection:text-indigo-200">
+
+    <!-- Navigation - Exact match with landing page -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/5 bg-black/70 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="text-xl font-semibold tracking-tighter text-white hover:text-zinc-300 transition-colors flex items-center gap-2">
+                <img src="/Shld.png" alt="Shield Logo" class="w-5 h-5">
+                Shield
+            </a>
+            <div class="hidden md:flex items-center space-x-8 text-xs font-medium tracking-wide text-zinc-400">
+                <a href="/#about" class="hover:text-white transition-colors">About</a>
+                <a href="/#pricing" class="hover:text-white transition-colors">Pricing</a>
+                <a href="/token" class="token-color">Token</a>
+                <a href="/#security" class="hover:text-white transition-colors">Security</a>
+                <a href="/#faq" class="hover:text-white transition-colors">FAQ</a>
+                <a href="/#roadmap" class="hover:text-white transition-colors">Roadmap</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://app.shieldhq.xyz" class="hidden md:flex group relative overflow-hidden rounded-full bg-white text-black px-5 py-2 text-xs font-medium tracking-wide transition-all hover:bg-zinc-200">
+                    <span class="relative z-10">Launch App</span>
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2" onclick="toggleMobileMenu()">
+                    <iconify-icon id="menu-icon" icon="lucide:menu" width="20" height="20" stroke-width="1.5"></iconify-icon>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10">
+            <div class="px-6 py-4 space-y-3">
+                <a href="/#about" class="block text-sm text-zinc-400 hover:text-white transition-colors py-2">About</a>
+                <a href="/#pricing" class="block text-sm text-zinc-400 hover:text-white transition-colors py-2">Pricing</a>
+                <a href="/token" class="block text-sm token-color py-2">Token</a>
+                <a href="/#security" class="block text-sm text-zinc-400 hover:text-white transition-colors py-2">Security</a>
+                <a href="/#faq" class="block text-sm text-zinc-400 hover:text-white transition-colors py-2">FAQ</a>
+                <a href="/#roadmap" class="block text-sm text-zinc-400 hover:text-white transition-colors py-2">Roadmap</a>
+                <a href="https://app.shieldhq.xyz" class="block w-full text-center bg-white text-black px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all hover:bg-zinc-200 mt-4">
+                    Launch App
+                </a>
+            </div>
+        </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 relative overflow-hidden">
+        <!-- Background glow -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[150px] pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <!-- Token Logo - Plain, no frame, BIGGER -->
+            <div class="mb-10">
+                <img src="/$SHLD.png" alt="$SHLD Token" class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto animate-float">
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+                The <span class="token-color">$SHLD</span> Token
+            </h1>
+
+            <p class="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-10">
+                Official utility token for the Shield Ecosystem. Powering secure file sharing,
+                ephemeral messaging, and governance across the platform.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://app.uniswap.org/swap?outputCurrency=0x0206e570a5d300E307De9D9896e91F603F80f930&chain=base"
+                   target="_blank"
+                   class="w-full sm:w-auto px-8 py-3 bg-white text-black rounded-full font-medium hover:bg-zinc-200 transition-colors flex items-center justify-center gap-2">
+                    <iconify-icon icon="lucide:shopping-cart" width="16"></iconify-icon>
+                    Trade on Uniswap
+                </a>
+                <a href="#contract"
+                   class="w-full sm:w-auto px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-full font-medium transition-colors flex items-center justify-center gap-2">
+                    <iconify-icon icon="lucide:file-code" width="16"></iconify-icon>
+                    View Contract
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Token Stats -->
+    <section class="py-16 px-4 border-t border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="glass-panel rounded-2xl p-6 text-center">
+                    <div class="text-zinc-500 text-xs uppercase tracking-wider mb-2">Token Name</div>
+                    <div class="text-white font-medium text-lg flex items-center justify-center gap-2">
+                        <img src="/Shld.png" alt="" class="w-5 h-5">
+                        Shield Token
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 text-center">
+                    <div class="text-zinc-500 text-xs uppercase tracking-wider mb-2">Symbol</div>
+                    <div class="token-color font-medium text-lg">$SHLD</div>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 text-center">
+                    <div class="text-zinc-500 text-xs uppercase tracking-wider mb-2">Network</div>
+                    <div class="text-white font-medium text-lg">Base</div>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 text-center">
+                    <div class="text-zinc-500 text-xs uppercase tracking-wider mb-2">Total Supply</div>
+                    <div class="text-white font-medium text-lg" id="supply-counter">0</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contract Address -->
+    <section id="contract" class="py-16 px-4 border-t border-white/5 bg-white/[0.02]">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="text-center mb-4">
+                <span class="text-zinc-500 text-sm uppercase tracking-wider">Contract Address</span>
+            </div>
+
+            <div class="flex items-center justify-center gap-3 flex-wrap">
+                <code class="text-sm md:text-base text-white font-mono glass-panel px-4 py-3 rounded-xl break-all">
+                    0x0206e570a5d300E307De9D9896e91F603F80f930
+                </code>
+                <button onclick="copyAddress()" class="copy-btn flex items-center gap-2 px-4 py-3 rounded-xl border border-white/10 text-zinc-300 hover:text-white glass-panel">
+                    <iconify-icon icon="lucide:copy" width="16"></iconify-icon>
+                    <span id="copy-text">Copy</span>
+                </button>
+            </div>
+
+            <div class="flex justify-center gap-6 mt-6">
+                <a href="https://basescan.org/token/0x0206e570a5d300E307De9D9896e91F603F80f930" target="_blank"
+                   class="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
+                    <iconify-icon icon="lucide:external-link" width="14"></iconify-icon>
+                    BaseScan
+                </a>
+                <a href="https://dexscreener.com/base/0x0206e570a5d300E307De9D9896e91F603F80f930" target="_blank"
+                   class="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
+                    <iconify-icon icon="lucide:external-link" width="14"></iconify-icon>
+                    DexScreener
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Chart -->
+    <section class="py-16 px-4 border-t border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-semibold text-white text-center mb-8">Live Chart</h2>
+
+            <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/50 relative" style="height: 500px;">
+                <!-- Loading state -->
+                <div id="chart-loader" class="absolute inset-0 flex flex-col items-center justify-center bg-black">
+                    <div class="w-10 h-10 border-2 border-white/20 border-t-white rounded-full animate-spin mb-4"></div>
+                    <span class="text-zinc-500 text-sm">Loading chart...</span>
+                </div>
+                <iframe id="dexscreener-chart" src="https://dexscreener.com/base/0x0206e570a5d300E307De9D9896e91F603F80f930?embed=1&theme=dark&chartOnly=true"
+                        width="100%" height="100%" frameborder="0" allowfullscreen style="border: none;"
+                        onload="document.getElementById('chart-loader').style.display='none'"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Markets -->
+    <section class="py-16 px-4 border-t border-white/5">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-2xl md:text-3xl font-semibold text-white mb-8">Markets</h2>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://app.uniswap.org/swap?outputCurrency=0x0206e570a5d300E307De9D9896e91F603F80f930&chain=base"
+                   target="_blank"
+                   class="glass-panel rounded-2xl p-6 flex items-center gap-4 hover:bg-white/5 transition-colors">
+                    <img src="https://cryptologos.cc/logos/uniswap-uni-logo.svg" alt="Uniswap" class="w-10 h-10">
+                    <div class="text-left">
+                        <div class="text-white font-medium">Uniswap</div>
+                        <div class="text-zinc-500 text-sm">Trade on Base</div>
+                    </div>
+                    <iconify-icon icon="lucide:arrow-up-right" class="text-zinc-500 ml-auto" width="20"></iconify-icon>
+                </a>
+
+                <a href="https://dexscreener.com/base/0x0206e570a5d300E307De9D9896e91F603F80f930"
+                   target="_blank"
+                   class="glass-panel rounded-2xl p-6 flex items-center gap-4 hover:bg-white/5 transition-colors">
+                    <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                        <iconify-icon icon="lucide:bar-chart-2" class="text-white" width="24"></iconify-icon>
+                    </div>
+                    <div class="text-left">
+                        <div class="text-white font-medium">DexScreener</div>
+                        <div class="text-zinc-500 text-sm">View Charts</div>
+                    </div>
+                    <iconify-icon icon="lucide:arrow-up-right" class="text-zinc-500 ml-auto" width="20"></iconify-icon>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Holders Utility -->
+    <section class="py-16 px-4 border-t border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-semibold text-white text-center mb-8">Holders Utility</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="glass-panel rounded-2xl p-6 text-center relative">
+                    <div class="absolute top-4 right-4 px-2 py-1 bg-zinc-800/80 rounded text-[10px] text-zinc-400 uppercase tracking-wider">Coming Soon</div>
+                    <div class="w-12 h-12 mx-auto mb-4 bg-indigo-500/10 rounded-xl flex items-center justify-center opacity-50">
+                        <iconify-icon icon="lucide:flask-conical" class="token-color" width="24"></iconify-icon>
+                    </div>
+                    <h3 class="text-white font-medium mb-2 opacity-50">Beta Access</h3>
+                    <p class="text-zinc-500 text-sm">Early access to new features and experimental products before public release</p>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 text-center relative">
+                    <div class="absolute top-4 right-4 px-2 py-1 bg-zinc-800/80 rounded text-[10px] text-zinc-400 uppercase tracking-wider">Coming Soon</div>
+
+                    <div class="w-12 h-12 mx-auto mb-4 bg-green-500/10 rounded-xl flex items-center justify-center opacity-50">
+                        <iconify-icon icon="lucide:hard-drive-upload" class="text-green-400" width="24"></iconify-icon>
+                    </div>
+                    <h3 class="text-white font-medium mb-2 opacity-50">Enhanced Storage</h3>
+                    <p class="text-zinc-500 text-sm">Increased file size limits and extended storage duration for seamless sharing</p>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 text-center relative">
+                    <div class="absolute top-4 right-4 px-2 py-1 bg-zinc-800/80 rounded text-[10px] text-zinc-400 uppercase tracking-wider">Coming Soon</div>
+
+                    <div class="w-12 h-12 mx-auto mb-4 bg-purple-500/10 rounded-xl flex items-center justify-center opacity-50">
+                        <iconify-icon icon="lucide:gift" class="text-purple-400" width="24"></iconify-icon>
+                    </div>
+                    <h3 class="text-white font-medium mb-2 opacity-50">Perks & Incentives</h3>
+                    <p class="text-zinc-500 text-sm">Exclusive rewards, airdrops, and special incentives for loyal token holders</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-4 border-t border-white/5">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to join the ecosystem?</h2>
+            <p class="text-zinc-400 mb-8">Start trading $SHLD today and unlock the full potential of Shield.</p>
+            <a href="https://app.uniswap.org/swap?outputCurrency=0x0206e570a5d300E307De9D9896e91F603F80f930&chain=base"
+               target="_blank"
+               class="inline-flex items-center gap-2 px-8 py-3 bg-white text-black rounded-full font-medium hover:bg-zinc-200 transition-colors">
+                <iconify-icon icon="lucide:shopping-cart" width="18"></iconify-icon>
+                Trade $SHLD on Uniswap
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer - Exact match with landing page -->
+    <footer class="bg-black border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="/" class="text-xl font-semibold tracking-tighter text-white block mb-6 flex items-center gap-2">
+                        <img src="/Shld.png" alt="Shield Logo" class="w-5 h-5"> Shield
+                    </a>
+                    <p class="text-zinc-500 text-xs leading-relaxed max-w-xs">
+                        The secure decentralized file transfer dApp. Your data, your rules.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-medium mb-4 text-xs">Product</h4>
+                    <ul class="space-y-2 text-xs text-zinc-500">
+                        <li><a href="https://app.shieldhq.xyz" class="hover:text-white transition-colors">Launch App</a></li>
+                        <li><a href="https://dune.com/shieldapp/shieldapp" class="hover:text-white transition-colors">Dune Dashboard</a></li>
+                        <li><a href="https://docs.shieldhq.xyz" class="hover:text-white transition-colors">Documentation</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-medium mb-4 text-xs">Connect</h4>
+                    <div class="flex gap-4">
+                        <a href="https://github.com/shieldhqxyz" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-zinc-400 hover:bg-white hover:text-black transition-all">
+                            <iconify-icon icon="lucide:github" width="14" stroke-width="1.5"></iconify-icon>
+                        </a>
+                        <a href="https://x.com/0xshieldapp" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-zinc-400 hover:bg-white hover:text-black transition-all">
+                            <iconify-icon icon="lucide:twitter" width="14" stroke-width="1.5"></iconify-icon>
+                        </a>
+                        <a href="https://discord.com/invite/S4j9TpHCnW" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-zinc-400 hover:bg-white hover:text-black transition-all">
+                            <iconify-icon icon="lucide:disc" width="14" stroke-width="1.5"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-zinc-600 text-[10px]">2026 Shield. All rights reserved.</p>
+                <div class="flex gap-6 text-[10px] text-zinc-600">
+                    <a href="https://docs.shieldhq.xyz/privacy" class="hover:text-zinc-400">Privacy Policy</a>
+                    <a href="https://docs.shieldhq.xyz/tos" class="hover:text-zinc-400">Terms of Service</a>
+                    <a href="#" class="hover:text-zinc-400 flex items-center gap-1">
+                        <div class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                        App Operational
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Count up animation for supply
+        function animateCounter() {
+            const counter = document.getElementById('supply-counter');
+            const target = 100000000000;
+            const duration = 2000;
+            const start = 0;
+            const startTime = performance.now();
+
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(start + (target - start) * easeProgress);
+
+                if (current >= 1000000000) {
+                    counter.textContent = (current / 1000000000).toFixed(0) + 'B';
+                } else if (current >= 1000000) {
+                    counter.textContent = (current / 1000000).toFixed(0) + 'M';
+                } else {
+                    counter.textContent = current.toLocaleString();
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = '100B';
+                }
+            }
+
+            requestAnimationFrame(updateCounter);
+        }
+
+        // Start animation when element is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter();
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const counter = document.getElementById('supply-counter');
+            if (counter) observer.observe(counter);
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.setAttribute('icon', 'lucide:x');
+            } else {
+                menu.classList.add('hidden');
+                icon.setAttribute('icon', 'lucide:menu');
+            }
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+                document.getElementById('menu-icon').setAttribute('icon', 'lucide:menu');
+            });
+        });
+
+        // Copy address function
+        function copyAddress() {
+            const address = '0x0206e570a5d300E307De9D9896e91F603F80f930';
+            navigator.clipboard.writeText(address).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const text = document.getElementById('copy-text');
+                btn.classList.add('copied');
+                text.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    text.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

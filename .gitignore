@@ -34,3 +34,7 @@ yarn-error.log*
 # Next.js build output
 /frontend/.next/
 .vercel
+
+# Claude Code
+.claude/
+.claude-*

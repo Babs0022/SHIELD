@@ -105,6 +105,7 @@
             <div class="hidden md:flex items-center space-x-8 text-xs font-medium tracking-wide text-zinc-400">
                 <a href="#about" class="hover:text-white transition-colors">About</a>
                 <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+                <a href="/token" class="hover:text-white transition-colors">Token</a>
                 <a href="#security" class="hover:text-white transition-colors">Security</a>
                 <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
                 <a href="#roadmap" class="hover:text-white transition-colors">Roadmap</a>
@@ -113,9 +114,21 @@
                 <a href="https://app.shieldhq.xyz" class="hidden md:flex group relative overflow-hidden rounded-full bg-white text-black px-5 py-2 text-xs font-medium tracking-wide transition-all hover:bg-zinc-200">
                     <span class="relative z-10">Launch App</span>
                 </a>
-                <button class="md:hidden text-white">
-                    <iconify-icon icon="lucide:menu" width="20" height="20" stroke-width="1.5"></iconify-icon>
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2" onclick="toggleMobileMenu()">
+                    <iconify-icon id="menu-icon" icon="lucide:menu" width="20" height="20" stroke-width="1.5"></iconify-icon>
                 </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10">
+            <div class="px-6 py-4 space-y-3">
+                <a href="#about" class="block text-sm text-zinc-400 hover:text-white transition-colors py-2">About</a>
+                <a href="#pricing" class="block text-sm text-zinc-400 hover:text-white transition-colors py-2">Pricing</a>
+                <a href="/token" class="block text-sm text-zinc-400 hover:text-white transition-colors py-2">Token</a>
+                <a href="#security" class="block text-sm text-zinc-400 hover:text-white transition-colors py-2">Security</a>
+                <a href="#faq" class="block text-sm text-zinc-400 hover:text-white transition-colors py-2">FAQ</a>
+                <a href="#roadmap" class="block text-sm text-zinc-400 hover:text-white transition-colors py-2">Roadmap</a>
+                <a href="https://app.shieldhq.xyz" class="block text-sm bg-white text-black px-4 py-2 rounded-full font-medium text-center mt-4">Launch App</a>
             </div>
         </div>
     </nav>
@@ -130,16 +143,18 @@
         </div>
 
         <div class="relative z-10 text-center px-4 max-w-4xl lg:max-w-6xl mx-auto space-y-8">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
-                <span class="relative flex h-1.5 w-1.5">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-indigo-500"></span>
+            <div class="inline-flex items-center gap-2 md:gap-2.5 px-3 md:px-4 py-1 md:py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
+                <span class="relative flex h-1.5 w-1.5 md:h-2 md:w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-1.5 w-1.5 md:h-2 md:w-2 bg-green-500"></span>
                 </span>
-                <span class="text-[10px] font-medium text-zinc-300 tracking-wide uppercase">v2 soft launch</span>
+                <span class="text-[10px] md:text-xs font-medium text-zinc-300 tracking-wide uppercase">$SHLD is live</span>
+                <a href="https://app.uniswap.org/swap?outputCurrency=0x0206e570a5d300E307De9D9896e91F603F80f930&chain=base" target="_blank" class="text-[10px] md:text-xs font-medium text-zinc-300 tracking-wide uppercase underline hover:text-white transition-colors">trade</a>
+                <a href="/token" class="text-[10px] md:text-xs font-medium text-zinc-300 tracking-wide uppercase underline hover:text-white transition-colors">info</a>
             </div>
             
-            <h1 class="text-6xl md:text-8xl lg:text-9xl font-medium tracking-tighter leading-[1.1] text-gradient">
-                <span class="whitespace-nowrap">Share what Matters,</span> <br> <span class="text-white font-normal fancy-strikethrough force-text-fill">SECURELY!</span>
+            <h1 class="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-medium tracking-tighter leading-[1.1] text-gradient">
+                <span class="whitespace-normal sm:whitespace-nowrap">Share what Matters,</span> <br class="hidden sm:block"> <span class="text-white font-normal fancy-strikethrough force-text-fill">SECURELY!</span>
             </h1>
             
             <p class="text-zinc-400 text-base md:text-lg font-light max-w-lg mx-auto leading-relaxed">
@@ -667,131 +682,6 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="py-24 px-6 bg-black">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-2xl font-medium text-white text-center mb-16 tracking-tight">Trusted by <span class="text-zinc-500">Users</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Review 1 -->
-                <div class="bg-zinc-900/30 backdrop-blur-sm border border-white/5 p-8 rounded-xl">
-                    <div class="flex gap-1 text-indigo-500 mb-4 opacity-70">
-                        <iconify-icon icon="lucide:star" width="12"></iconify-icon>
-                        <iconify-icon icon="lucide:star" width="12"></iconify-icon>
-                        <iconify-icon icon="lucide:star" width="12"></iconify-icon>
-                        <iconify-icon icon="lucide:star" width="12"></iconify-icon>
-                        <iconify-icon icon="lucide:star" width="12"></iconify-icon>
-                    </div>
-                    <p class="text-zinc-300 text-sm leading-relaxed mb-6 font-light">"The dApp is intuitive and fast. I use it daily for sending sensitive contracts to clients."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 bg-zinc-800 rounded-full flex items-center justify-center text-white text-xs font-medium">JD</div>
-                        <div>
-                            <p class="text-white text-xs font-medium">Alex Chen</p>
-                            <p class="text-zinc-500 text-[10px]">Consultant</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Review 2 -->
-                <div class="bg-zinc-900/30 backdrop-blur-sm border border-white/5 p-8 rounded-xl">
-                    <div class="flex gap-1 text-indigo-500 mb-4 opacity-70">
-                        <iconify-icon icon="lucide:star" width="12"></iconify-icon>
-                        <iconify-icon icon="lucide:star" width="12"></iconify-icon>
-                        <iconify-icon icon="lucide:star" width="12"></iconify-icon>
-                        <iconify-icon icon="lucide:star" width="12"></iconify-icon>
-                        <iconify-icon icon="lucide:star" width="12"></iconify-icon>
-                    </div>
-                    <p class="text-zinc-300 text-sm leading-relaxed mb-6 font-light">"Finally, a file transfer tool that doesn't feel like it's harvesting my metadata. Fast, clean, and secure."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 bg-zinc-800 rounded-full flex items-center justify-center text-white text-xs font-medium">MK</div>
-                        <div>
-                            <p class="text-white text-xs font-medium">Maria K.</p>
-                            <p class="text-zinc-500 text-[10px]">Journalist</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Review 3 -->
-                <div class="bg-zinc-900/30 backdrop-blur-sm border border-white/5 p-8 rounded-xl">
-                    <div class="flex gap-1 text-indigo-500 mb-4 opacity-70">
-                        <iconify-icon icon="lucide:star" width="12"></iconify-icon>
-                        <iconify-icon icon="lucide:star" width="12"></iconify-icon>
-                        <iconify-icon icon="lucide:star" width="12"></iconify-icon>
-                        <iconify-icon icon="lucide:star" width="12"></iconify-icon>
-                        <iconify-icon icon="lucide:star" width="12"></iconify-icon>
-                    </div>
-                    <p class="text-zinc-300 text-sm leading-relaxed mb-6 font-light">"The self-destruct feature for sensitive documents is a game changer for our legal team."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 bg-zinc-800 rounded-full flex items-center justify-center text-white text-xs font-medium">TR</div>
-                        <div>
-                            <p class="text-white text-xs font-medium">Thomas Ross</p>
-                            <p class="text-zinc-500 text-[10px]">Attorney</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sign Up Form (Reservation) -->
-    <section id="access" class="py-24 px-6 relative overflow-hidden bg-black">
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-indigo-900/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="max-w-lg mx-auto relative z-10">
-            <div class="text-center mb-10">
-                <span class="text-indigo-400 text-[10px] font-semibold tracking-widest uppercase mb-4 block">Get Started</span>
-                <h2 class="text-3xl font-medium text-white tracking-tight mb-4">Start Encrypting</h2>
-                <p class="text-zinc-500 text-sm">Protect what matters, with Shield.</p>
-            </div>
-
-            <form class="bg-zinc-900/20 border-white/5 border rounded-2xl p-8 shadow-2xl backdrop-blur-sm">
-    <a href="https://app.shieldhq.xyz" class="w-full bg-white text-black font-medium py-4 rounded-lg hover:bg-zinc-200 transition-colors flex items-center justify-center gap-2 group shadow-lg shadow-white/5">
-        Launch App
-        <iconify-icon icon="lucide:arrow-right" class="group-hover:translate-x-1 transition-transform" width="16"></iconify-icon>
-    </a>
-</form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black border-t border-white/5 pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-                <div class="col-span-1 md:col-span-1">
-                    <a href="#" class="text-xl font-semibold tracking-tighter text-white block mb-6 flex items-center gap-2">
-                        <img src="/Shld.png" alt="Shield Logo" class="w-5 h-5"> Shield
-                    </a>
-                    <p class="text-zinc-500 text-xs leading-relaxed max-w-xs">
-                        The secure decentralized file transfer dApp. Your data, your rules.
-                    </p>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-medium mb-4 text-xs">Product</h4>
-                    <ul class="space-y-2 text-xs text-zinc-500">
-                        <li><a href="#" class="hover:text-white transition-colors">Launch App</a></li>
-                        <li><a href="https://dune.com/shieldapp/shieldapp" class="hover:text-white transition-colors">Dune Dashboard</a></li>
-                        <li><a href="https://docs.shieldhq.xyz" class="hover:text-white transition-colors">Documentation</a></li>
-                        
-                        
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-medium mb-4 text-xs">Connect</h4>
-                    <div class="flex gap-4">
-                        <a href="https://github.com/shieldhqxyz" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-zinc-400 hover:bg-white hover:text-black transition-all">
-                            <iconify-icon icon="lucide:github" width="14" stroke-width="1.5"></iconify-icon>
-                        </a>
-                        <a href="https://x.com/0xshieldapp" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-zinc-400 hover:bg-white hover:text-black transition-all">
-                            <iconify-icon icon="lucide:twitter" width="14" stroke-width="1.5"></iconify-icon>
-                        </a>
-                        <a href="https://discord.com/invite/S4j9TpHCnW" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-zinc-400 hover:bg-white hover:text-black transition-all">
-                            <iconify-icon icon="lucide:disc" width="14" stroke-width="1.5"></iconify-icon>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-zinc-600 text-[10px]">© 2026 Shield. All rights reserved.</p>
                 <div class="flex gap-6 text-[10px] text-zinc-600">
                     <a href="https://docs.shieldhq.xyz/privacy" class="hover:text-zinc-400">Privacy Policy</a>
                     <a href="https://docs.shieldhq.xyz/tos" class="hover:text-zinc-400">Terms of Service</a>
@@ -832,6 +722,48 @@
                         icon.style.transform = 'rotate(0deg)';
                     }
                 });
+            });
+
+            // Mobile menu toggle function
+            window.toggleMobileMenu = function() {
+                const menu = document.getElementById('mobile-menu');
+                const icon = document.getElementById('menu-icon');
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden');
+                    icon.setAttribute('icon', 'lucide:x');
+                } else {
+                    menu.classList.add('hidden');
+                    icon.setAttribute('icon', 'lucide:menu');
+                }
+            };
+
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                    document.getElementById('menu-icon').setAttribute('icon', 'lucide:menu');
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.setAttribute('icon', 'lucide:x');
+            } else {
+                menu.classList.add('hidden');
+                icon.setAttribute('icon', 'lucide:menu');
+            }
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+                document.getElementById('menu-icon').setAttribute('icon', 'lucide:menu');
             });
         });
     </script>
