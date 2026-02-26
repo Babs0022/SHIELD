@@ -194,8 +194,11 @@ export default function AnnouncementCard({
   useEffect(() => {
     // Check if user has previously closed this announcement
     const hasBeenClosed = localStorage.getItem(storageKey);
-    if (!hasBeenClosed && autoShow) {
-      // Small delay for better UX
+    if (hasBeenClosed) {
+      // User previously closed it, show the "?" button
+      setIsClosed(true);
+    } else if (autoShow) {
+      // First time, show the card with delay
       const timer = setTimeout(() => {
         setIsVisible(true);
       }, 1000);
