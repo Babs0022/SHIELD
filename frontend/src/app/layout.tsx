@@ -46,6 +46,7 @@ export const viewport: Viewport = {
 
 
 import { Analytics } from "@vercel/analytics/next";
+import AnnouncementCard from '@/components/AnnouncementCard';
 
 export default function RootLayout({
   children,
@@ -61,7 +62,14 @@ export default function RootLayout({
               <Toaster />
               <Navbar />
               {children}
-      
+              <AnnouncementCard
+                title="NEW: $SHLD is live, on Base."
+                description="Discover the Shield token and its utility in the ecosystem."
+                actionText="Learn More"
+                actionLink="https://shieldhq.xyz/token"
+                storageKey="shield-token-announcement-v2"
+              />
+
               <Analytics />
             </StyledComponentsRegistry>
           </ProfileProvider>
