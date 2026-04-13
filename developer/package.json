@@ -1,0 +1,43 @@
+{
+  "name": "@shield/developer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3002",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:migrate": "node scripts/run-migration.js"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.9.5",
+    "@reown/appkit": "^1.0.0",
+    "@reown/appkit-adapter-wagmi": "^1.0.0",
+    "@tanstack/react-query": "^5.0.0",
+    "@types/pg": "^8.16.0",
+    "@types/ws": "^8.18.1",
+    "@wagmi/core": "^2.0.0",
+    "axios": "^1.13.5",
+    "ethers": "^6.11.0",
+    "jose": "^5.2.0",
+    "lucide-react": "^0.575.0",
+    "next": "^16.1.6",
+    "pg": "^8.19.0",
+    "qrcode.react": "^4.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "viem": "^2.0.0",
+    "wagmi": "^2.0.0",
+    "ws": "^8.19.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^18.2.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.0"
+  }
+}

@@ -1,0 +1,690 @@
+.container {
+  min-height: 100vh;
+  background-color: #000;
+}
+
+.header {
+  background-color: #111111;
+  border-bottom: 1px solid #2a2a2a;
+  padding: 16px 0;
+}
+
+.headerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #e4e4e7;
+  font-family: 'Coinbase Sans', sans-serif;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.walletAddress {
+  font-size: 0.9rem;
+  color: #a1a1aa;
+  font-family: monospace;
+}
+
+.tierBadge {
+  padding: 6px 12px;
+  background-color: rgba(138, 138, 255, 0.1);
+  border: 1px solid rgba(138, 138, 255, 0.3);
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #8A8AFF;
+  text-transform: capitalize;
+}
+
+.logoutButton {
+  padding: 8px 16px;
+  border: 1px solid #3a3a3a;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #a1a1aa;
+  background-color: transparent;
+  font-family: 'Coinbase Sans', sans-serif;
+  margin-left: 8px;
+}
+
+.logoutButton:hover {
+  background-color: rgba(248, 113, 113, 0.1);
+  border-color: rgba(248, 113, 113, 0.5);
+  color: #f87171;
+}
+
+.docsLink {
+  padding: 8px 16px;
+  border: 1px solid #3a3a3a;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #a1a1aa;
+  background-color: transparent;
+  font-family: 'Coinbase Sans', sans-serif;
+  text-decoration: none;
+}
+
+.docsLink:hover {
+  background-color: rgba(138, 138, 255, 0.1);
+  border-color: rgba(138, 138, 255, 0.5);
+  color: #8A8AFF;
+}
+
+.docsLink {
+  padding: 8px 16px;
+  color: #8A8AFF;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.docsLink:hover {
+  background-color: rgba(138, 138, 255, 0.1);
+  border-color: rgba(138, 138, 255, 0.3);
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.card {
+  background-color: #111111;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #e4e4e7;
+  margin-bottom: 20px;
+  font-family: 'Coinbase Sans', sans-serif;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.statCard {
+  background-color: #1a1a1a;
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.statLabel {
+  font-size: 0.85rem;
+  color: #a1a1aa;
+  margin-bottom: 8px;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #e4e4e7;
+}
+
+.statValueMono {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #e4e4e7;
+  font-family: monospace;
+  word-break: break-all;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.primaryButton {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 100px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #000;
+  background-color: #ffffff;
+  font-family: 'Coinbase Sans', sans-serif;
+}
+
+.primaryButton:hover {
+  background-color: #e4e4e7;
+}
+
+.secondaryButton {
+  padding: 12px 24px;
+  border: 1px solid #3a3a3a;
+  border-radius: 100px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #e4e4e7;
+  background-color: transparent;
+  font-family: 'Coinbase Sans', sans-serif;
+}
+
+.secondaryButton:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: #8A8AFF;
+}
+
+.usageGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+@media (min-width: 768px) {
+  .usageGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.usageCard {
+  background-color: #1a1a1a;
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.usageTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e4e4e7;
+  margin-bottom: 16px;
+  font-family: 'Coinbase Sans', sans-serif;
+}
+
+.usageRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.usageRow:last-child {
+  border-bottom: none;
+}
+
+.usageLabel {
+  color: #a1a1aa;
+  font-size: 0.95rem;
+}
+
+.usageValue {
+  color: #e4e4e7;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.limitsRow {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .limitsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.limitItem {
+  background-color: #1a1a1a;
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.limitLabel {
+  font-size: 0.85rem;
+  color: #a1a1aa;
+  margin-bottom: 8px;
+}
+
+.limitValue {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #e4e4e7;
+}
+
+.loadingContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #8A8AFF;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.errorContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error {
+  color: #f87171;
+  font-size: 1rem;
+}
+
+/* Logout Button */
+.logoutButton {
+  padding: 8px 16px;
+  border: 1px solid #3a3a3a;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #a1a1aa;
+  background-color: transparent;
+  font-family: 'Coinbase Sans', sans-serif;
+}
+
+.logoutButton:hover {
+  background-color: rgba(248, 113, 113, 0.1);
+  border-color: rgba(248, 113, 113, 0.3);
+  color: #f87171;
+}
+
+/* API Key Section */
+.apiKeySection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.apiKeyRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #1a1a1a;
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+}
+
+.apiKeyLabel {
+  font-size: 0.9rem;
+  color: #a1a1aa;
+}
+
+.apiKeyValue {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: #e4e4e7;
+}
+
+.apiKeyCode {
+  font-family: monospace;
+  background-color: #0a0a0a;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.apiKeyNote {
+  font-size: 0.85rem;
+  color: #a1a1aa;
+  background-color: rgba(138, 138, 255, 0.05);
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(138, 138, 255, 0.1);
+}
+
+.apiKeyNote strong {
+  color: #8A8AFF;
+}
+
+.noData {
+  color: #a1a1aa;
+  font-size: 0.95rem;
+}
+
+/* Icon Button */
+.iconButton {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: transparent;
+}
+
+.iconButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Copy Button */
+.copyButton {
+  padding: 4px 8px;
+  margin-left: 8px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: transparent;
+  opacity: 0.6;
+}
+
+.copyButton:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal {
+  background-color: #111111;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modalHeader {
+  margin-bottom: 24px;
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #e4e4e7;
+  margin-bottom: 8px;
+  font-family: 'Coinbase Sans', sans-serif;
+}
+
+.modalSubtitle {
+  font-size: 0.95rem;
+  color: #f87171;
+}
+
+.credentialsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.credentialRow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background-color: #1a1a1a;
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+}
+
+.credentialLabel {
+  font-size: 0.85rem;
+  color: #a1a1aa;
+  font-weight: 500;
+}
+
+.credentialValue {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.credentialCode {
+  flex: 1;
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #e4e4e7;
+  background-color: #0a0a0a;
+  padding: 12px;
+  border-radius: 8px;
+  word-break: break-all;
+}
+
+.credentialValue .copyButton {
+  padding: 8px 12px;
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  color: #e4e4e7;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.credentialValue .copyButton:hover {
+  background-color: #3a3a3a;
+}
+
+.modalActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* No API Key Section */
+.noApiKeySection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px;
+  text-align: center;
+}
+
+.noDataSub {
+  color: #a1a1aa;
+  font-size: 0.95rem;
+  margin-top: -8px;
+}
+
+/* CLI Auth Banner */
+.cliBanner {
+  background: linear-gradient(135deg, rgba(138, 138, 255, 0.1) 0%, rgba(138, 138, 255, 0.05) 100%);
+  border: 1px solid rgba(138, 138, 255, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 0 auto 24px;
+  max-width: 1200px;
+}
+
+.cliBannerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cliBannerIcon {
+  font-size: 2rem;
+}
+
+.cliBannerText {
+  flex: 1;
+}
+
+.cliBannerText strong {
+  display: block;
+  color: #8A8AFF;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.cliBannerText p {
+  color: #a1a1aa;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* CLI Auth Banner */
+.cliBanner {
+  background: linear-gradient(135deg, rgba(138, 138, 255, 0.1) 0%, rgba(138, 138, 255, 0.05) 100%);
+  border: 1px solid rgba(138, 138, 255, 0.3);
+  border-radius: 12px;
+  padding: 16px 24px;
+  margin: 0 auto 24px;
+  max-width: 1200px;
+}
+
+.cliBannerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cliBannerIcon {
+  font-size: 1.5rem;
+}
+
+.cliBannerText strong {
+  color: #e4e4e7;
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #2a2a2a;
+  padding-bottom: 16px;
+}
+
+.tab {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #a1a1aa;
+  background-color: transparent;
+}
+
+.tab:hover {
+  color: #e4e4e7;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tabActive {
+  color: #000;
+  background-color: #8A8AFF;
+}
+
+.tabActive:hover {
+  color: #000;
+  background-color: #8A8AFF;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #2a2a2a;
+  padding-bottom: 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  padding: 10px 20px;
+  border: 1px solid #3a3a3a;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #a1a1aa;
+  background-color: transparent;
+  font-family: 'Coinbase Sans', sans-serif;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  border-color: #8A8AFF;
+  color: #e4e4e7;
+}
+
+.tabActive {
+  background-color: #8A8AFF;
+  border-color: #8A8AFF;
+  color: #000;
+}

@@ -1,0 +1,47 @@
+{
+  "name": "@shield/cli",
+  "version": "0.1.0",
+  "description": "SHIELD Developer CLI - Create and manage secure content policies",
+  "main": "dist/index.js",
+  "bin": {
+    "shield": "./bin/shield"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts"
+  },
+  "keywords": [
+    "shield",
+    "encryption",
+    "secure",
+    "sharing",
+    "cli"
+  ],
+  "author": "SHIELD Team",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "blessed": "^0.1.81",
+    "chalk": "^5.3.0",
+    "commander": "^11.0.0",
+    "dotenv": "^17.3.1",
+    "ethers": "^6.11.0",
+    "form-data": "^4.0.5",
+    "inquirer": "^9.2.0",
+    "keytar": "^7.9.0",
+    "open": "^9.1.0",
+    "ora": "^7.0.0",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.0",
+    "@types/node": "^20.0.0",
+    "@types/qrcode-terminal": "^0.12.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

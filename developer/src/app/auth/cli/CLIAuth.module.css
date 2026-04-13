@@ -1,0 +1,208 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000;
+  padding: 20px;
+  padding-top: 80px;
+  box-sizing: border-box;
+}
+
+.form {
+  background-color: #111111;
+  border: 1px solid #2a2a2a;
+  border-radius: 24px;
+  padding: 40px;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #e4e4e7;
+  text-align: center;
+  margin-bottom: 0;
+  font-family: 'Coinbase Sans', sans-serif;
+}
+
+.description {
+  color: #a1a1aa;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.deviceCodeBox {
+  background-color: #1a1a1a;
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.deviceCodeLabel {
+  font-size: 0.75rem;
+  color: #a1a1aa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.deviceCodeValue {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #e4e4e7;
+  font-family: monospace;
+}
+
+.connectSection {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.connectedSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.walletInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #3a3a3a;
+}
+
+.walletLabel {
+  font-size: 0.75rem;
+  color: #a1a1aa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.walletAddress {
+  font-size: 1.1rem;
+  color: #e4e4e7;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+.button {
+  padding: 14px;
+  border: none;
+  border-radius: 100px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #000;
+  background-color: #ffffff;
+  width: 100%;
+  font-family: 'Coinbase Sans', sans-serif;
+}
+
+.button:hover {
+  background-color: #e4e4e7;
+}
+
+.button:disabled {
+  background-color: #3f3f46;
+  color: #71717a;
+  cursor: not-allowed;
+}
+
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+}
+
+.loadingState p {
+  color: #a1a1aa;
+  font-size: 0.95rem;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #8A8AFF;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.successIcon {
+  width: 64px;
+  height: 64px;
+  background-color: rgba(138, 138, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: #8A8AFF;
+}
+
+.successIcon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.apiKeyBox {
+  background-color: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.apiKeyLabel {
+  font-size: 0.85rem;
+  color: #f59e0b;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.apiKeyValue {
+  background-color: #000;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #4ade80;
+  word-break: break-all;
+}
+
+.error {
+  color: #f87171;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  text-align: center;
+  padding: 12px;
+  background-color: rgba(248, 113, 113, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(248, 113, 113, 0.2);
+}
