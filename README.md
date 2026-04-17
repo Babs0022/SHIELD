@@ -11,6 +11,20 @@ SHIELD is a decentralized application (dApp) that enables secure sharing of conf
 
 ---
 
+## Documentation
+
+| Document | Description |
+|----------|-------------|
+| [Architecture](docs/ARCHITECTURE.md) | System design, component diagram, data flows |
+| [API Reference](docs/API.md) | All HTTP API endpoints with request/response details |
+| [Smart Contract](docs/SMART_CONTRACT.md) | Contract functions, events, ABI, and security |
+| [Database Schema](docs/DATABASE.md) | All tables, columns, and indexes |
+| [Deployment Guide](docs/DEPLOYMENT.md) | Step-by-step setup and deployment instructions |
+| [Security Model](docs/SECURITY.md) | Trust model, threat analysis, and limitations |
+| [Contributing](docs/CONTRIBUTING.md) | How to contribute to the project |
+
+---
+
 ## Features
 
 - **End-to-End Encryption** — Content is encrypted in the browser using AES-GCM 256 before ever leaving your device
@@ -20,6 +34,8 @@ SHIELD is a decentralized application (dApp) that enables secure sharing of conf
 - **Time-Limited Access** — Set expiration dates for your shared content
 - **Attempt Limits** — Restrict the number of times content can be accessed
 - **Access Logging** — On-chain record of every access attempt for transparency
+- **Tier System** — Free and Pro tiers with different limits for file size, daily shares, and API rate limits
+- **Admin Dashboard** — Platform management for administrators
 - **Clean, Modern UI** — Built with Next.js, React, and Tailwind CSS
 
 ---
@@ -78,6 +94,8 @@ SHIELD's security is centered around a **trustless, end-to-end encrypted** model
 
 This hybrid architecture allows SHIELD to provide a user-friendly experience without compromising on the core promise of trustless, end-to-end encrypted file sharing.
 
+For a detailed security analysis, see the [Security Model](docs/SECURITY.md).
+
 ---
 
 ## Technology Stack
@@ -86,8 +104,8 @@ This hybrid architecture allows SHIELD to provide a user-friendly experience wit
 - **Framework:** Next.js 16 (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS + CSS Modules
-- **State Management:** React Query + Wagmi
-- **Wallet Integration:** RainbowKit + WalletConnect
+- **State Management:** React Query (TanStack) + Wagmi
+- **Wallet Integration:** Reown AppKit + WalletConnect
 - **Authentication:** SIWE (Sign-In with Ethereum)
 
 ### Smart Contracts
@@ -97,15 +115,15 @@ This hybrid architecture allows SHIELD to provide a user-friendly experience wit
 - **Testing:** Hardhat Network + TypeChain
 
 ### Backend Services
-- **Database:** PostgreSQL (via Neon)
+- **Database:** PostgreSQL (via Neon serverless)
 - **Storage:** IPFS via Pinata
-- **Rate Limiting:** Custom implementation with sliding window
+- **Rate Limiting:** Custom sliding-window implementation
 - **Analytics:** Vercel Analytics
 
 ### Cryptography
 - **Encryption:** AES-GCM 256 (Web Crypto API)
-- **Key Generation:** Crypto.getRandomValues
-- **Hashing:** SHA-256
+- **Key Generation:** `crypto.getRandomValues`
+- **JWT:** HS256 via `jose`
 
 ---
 
@@ -116,23 +134,33 @@ SHIELD/
 ├── frontend/                 # Next.js frontend application
 │   ├── src/
 │   │   ├── app/             # Next.js App Router
-│   │   │   ├── api/         # API routes
-│   │   │   ├── access/      # Access content page
+│   │   │   ├── api/         # API routes (signIn, storeMetadata, verify-siwe, ...)
 │   │   │   ├── admin/       # Admin dashboard
-│   │   │   ├── docs/        # Documentation
+│   │   │   ├── docs/        # In-app documentation page
 │   │   │   ├── profile/     # User profile
-│   │   │   └── upgrade/     # Plan upgrades
+│   │   │   ├── r/[policyId] # Share recipient landing page
+│   │   │   └── upgrade/     # Plan upgrade page
 │   │   ├── components/      # React components
+│   │   ├── config/          # App configuration (chains, AppKit, admin)
 │   │   ├── contexts/        # React contexts
-│   │   ├── hooks/           # Custom React hooks
-│   │   └── lib/             # Utility functions
+│   │   └── lib/             # Utilities (DB, rate limiting, ABI, logger)
 │   └── public/              # Static assets
 │
 ├── contracts/               # Smart contracts
-│   ├── contracts/           # Solidity source files
+│   ├── contracts/
 │   │   └── Shield.sol       # Main access control contract
-│   ├── test/                # Contract tests
-│   └── scripts/             # Deployment scripts
+│   ├── scripts/
+│   │   └── deploy.ts        # Deployment script
+│   └── test/                # Contract tests
+│
+├── docs/                    # Project documentation
+│   ├── ARCHITECTURE.md
+│   ├── API.md
+│   ├── SMART_CONTRACT.md
+│   ├── DATABASE.md
+│   ├── DEPLOYMENT.md
+│   ├── SECURITY.md
+│   └── CONTRIBUTING.md
 │
 └── public/                  # Static site assets
 ```
@@ -144,86 +172,48 @@ SHIELD/
 ### Prerequisites
 
 - Node.js 18+ and npm
-- A wallet with Base Sepolia/Base Mainnet ETH for testing
+- A web3 wallet (MetaMask, Coinbase Wallet, etc.)
 - Pinata account (for IPFS)
-- PostgreSQL database (local or Neon)
+- PostgreSQL database (Neon recommended)
+- WalletConnect Project ID (from [Reown Cloud](https://cloud.reown.com/))
 
-### Installation
+### Quick Start
 
-1. Clone the repository:
+1. **Clone the repository:**
 ```bash
-git clone https://github.com/Babs0022/SHIELD.git
+git clone https://github.com/babs0022/SHIELD.git
 cd SHIELD
 ```
 
-2. Install root dependencies:
+2. **Install dependencies:**
 ```bash
 npm install
+cd frontend && npm install && cd ..
+cd contracts && npm install && cd ..
 ```
 
-3. Install frontend dependencies:
+3. **Configure environment:**
 ```bash
-cd frontend
-npm install
-cd ..
-```
-
-4. Install contract dependencies:
-```bash
-cd contracts
-npm install
-cd ..
-```
-
-### Environment Setup
-
-Create a `.env` file in the `frontend/` directory:
-
-```env
-# Database
-DATABASE_URL=postgresql://user:password@host:port/database
-
-# IPFS (Pinata)
+# Create frontend/.env with the following variables:
+POSTGRES_URL=postgresql://user:password@host/dbname
 PINATA_JWT=your_pinata_jwt
 PINATA_GATEWAY_URL=https://your-gateway.mypinata.cloud
-
-# Blockchain
-ALCHEMY_API_KEY=your_alchemy_key
+BASE_MAINNET_RPC_URL=https://mainnet.base.org
+NEXT_PUBLIC_CONTRACT_ADDRESS=0xYourDeployedContractAddress
 NEXT_PUBLIC_WC_PROJECT_ID=your_walletconnect_project_id
-
-# Contract Addresses
-NEXT_PUBLIC_SHIELD_CONTRACT_BASE=0x...
-NEXT_PUBLIC_SHIELD_CONTRACT_BASE_SEPOLIA=0x...
-
-# App
+JWT_SECRET=a-long-random-secret-at-least-32-chars
 NEXT_PUBLIC_APP_URL=http://localhost:3000
-SESSION_SECRET=your_session_secret
 ```
 
-### Running Locally
-
-1. Start the frontend development server:
+4. **Start the development server:**
 ```bash
 cd frontend
 npm run dev
 ```
 
-2. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Open [http://localhost:3000](http://localhost:3000).
 
-### Deploying Contracts
-
-1. Configure Hardhat network in `contracts/hardhat.config.ts`
-
-2. Deploy to testnet:
-```bash
-cd contracts
-npx hardhat run scripts/deploy.ts --network baseSepolia
-```
-
-3. Deploy to mainnet:
-```bash
-npx hardhat run scripts/deploy.ts --network baseMainnet
-```
+For the complete setup guide including smart contract deployment, see the [Deployment Guide](docs/DEPLOYMENT.md).
 
 ---
 
@@ -244,29 +234,58 @@ struct AccessPolicy {
 
 ### Key Functions
 
-- `createPolicy()` — Create a new access policy
-- `logAttempt()` — Log an access attempt (requires recipient signature)
-- `isPolicyValid()` — Check if a policy is currently valid
+| Function | Description |
+|----------|-------------|
+| `createPolicy(policyId, recipient, expiry, maxAttempts)` | Create a new access policy |
+| `logAttempt(policyId, success)` | Log an access attempt (recipient only) |
+| `isPolicyValid(policyId)` | Check if a policy is currently valid (view) |
+
+For the full contract reference including events, ABI, and security analysis, see the [Smart Contract Reference](docs/SMART_CONTRACT.md).
+
+---
+
+## API Overview
+
+SHIELD exposes a set of REST API endpoints:
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/signIn` | POST | Authenticate via SIWE, receive JWT |
+| `/api/verify-siwe` | POST | Verify recipient SIWE signature against policy |
+| `/api/storeMetadata` | POST | Store policy metadata after share creation |
+| `/api/getPolicy/[id]` | GET | Retrieve policy metadata |
+| `/api/getEncryptedContent/[cid]` | GET | Proxy fetch of encrypted IPFS content |
+| `/api/user/links` | GET | List authenticated user's shared links |
+| `/api/user/links/revoke` | POST | Revoke a shared link |
+| `/api/user/profile` | GET/POST | Get or update user profile |
+| `/api/access-logs` | GET/POST | Access attempt logs |
+| `/api/upgrade` | POST | Upgrade to Pro tier |
+| `/api/health` | GET | Health check |
+
+For the complete API reference, see [API Reference](docs/API.md).
 
 ---
 
 ## Security Considerations
 
-- **Secret keys** are stored in URL fragments (`#key`) which are never sent to servers
-- **Encrypted content** is stored on IPFS without any identifying metadata
-- **Access control** is enforced by immutable smart contracts
+- **Secret keys** are stored in URL fragments (`#key`) which are **never sent to servers**
+- **Encrypted content** is stored on IPFS; the backend only stores the CID
+- **Access control** is enforced by immutable smart contracts on Base
 - **No server** ever has access to unencrypted content or decryption keys
 - **Rate limiting** prevents abuse of the API endpoints
+- **SIWE authentication** is domain-bound and phishing-resistant
+
+For a comprehensive security analysis, see the [Security Model](docs/SECURITY.md).
 
 ---
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please read the [Contributing Guide](docs/CONTRIBUTING.md) before submitting a pull request.
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
+3. Commit your changes following the [Conventional Commits](https://www.conventionalcommits.org/) format
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
@@ -274,7 +293,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License — see the [LICENSE.md](LICENSE.md) file for details.
 
 ---
 
@@ -284,6 +303,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 - Smart contracts powered by [Hardhat](https://hardhat.org/)
 - Deployed on [Base](https://base.org/)
 - IPFS pinning via [Pinata](https://pinata.cloud/)
+- Wallet connection via [Reown AppKit](https://reown.com/)
+- Serverless PostgreSQL by [Neon](https://neon.tech/)
 
 ---
 
